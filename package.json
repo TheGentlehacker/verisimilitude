@@ -1,0 +1,32 @@
+{
+  "name": "verisimilitude",
+  "version": "0.0.1",
+  "description": "Run OAuth2 in-memory for testing. Poorly.",
+  "main": "server.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ./src/verisimilitude.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint ."
+  },
+  "keywords": [
+    "testing",
+    "oauth"
+  ],
+  "author": "Dylan Lacey, the GentleHacker.",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@types/eslint__js": "^8.42.3",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0",
+    "zod": "^3.23.8"
+  },
+  "dependencies": {
+    "falso": "^0.0.0",
+    "fastify": "^4.28.1",
+    "nanoid": "^5.0.7"
+  }
+}
