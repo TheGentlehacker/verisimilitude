@@ -27,7 +27,7 @@ export const FastifyServer = (config: VerisimilitudeConfig, responses: OICDRespo
                 .type("application/json")
                 .send(reply_details.errors)
         } else {
-            console.log("Sending Auth code")
+            logger.debug("Sending authorization code")
 
             reply.redirect(reply_details.href)
         }
