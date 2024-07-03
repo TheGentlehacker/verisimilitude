@@ -1,3 +1,4 @@
+import { SpecificationDefaultClaims } from "./util/default_claims"
 import { VerisimilitudeConfig } from "./util/zodTypes"
 
 export const defaultConfig: VerisimilitudeConfig = {
@@ -14,6 +15,7 @@ export const defaultConfig: VerisimilitudeConfig = {
         client_id: "a_very_good_friend_and_client_of_mine",
         state: "botheration"
     },
+    defaultClaims: SpecificationDefaultClaims,
     logger: {
         debug: (message: string) => {console.debug(message)},
         warn: (message: string) => {console.warn(message)},
@@ -31,3 +33,4 @@ export const defaultConfig: VerisimilitudeConfig = {
     }
 
 }
+

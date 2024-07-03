@@ -13,7 +13,7 @@ export interface RequestDetails {
     state?: string,
     client_id?: string,
     nonce?: string,
-    claims?: Array<string>
+    scope?: Array<string>
 }
 
 export type StoredUser = {

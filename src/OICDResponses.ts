@@ -1,5 +1,5 @@
 import { ZodError } from "zod";
-import { OICDAuthParams, OICDIDTokenRequestParams, OICDWellKnownType, VerisimilitudeConfig, oicdTokenRequestParamsValidator, oidcAuthParamsValidator } from "./util/zodTypes";
+import { DefaultClaimsType, OICDAuthParams, OICDIDTokenRequestParams, OICDWellKnownType, VerisimilitudeConfig, oicdTokenRequestParamsValidator, oidcAuthParamsValidator } from "./util/zodTypes";
 import { StoredUser, getCode, user_by_code } from "./userStore";
 import * as jose from 'jose'
 import { StandardClaims } from "./util/standard_claims";
@@ -29,7 +29,6 @@ export const OICDResponses = (config: VerisimilitudeConfig): OICDResponsesType =
             oidcAuthParamsValidator.parse(params)
 
             const redirect_uri = new URL(params.redirect_uri) as URL
-            console.debug("Auth redirect_uri param ", redirect_uri)
             
             if (params.state) {
                 const state = params.state
@@ -37,10 +36,16 @@ export const OICDResponses = (config: VerisimilitudeConfig): OICDResponsesType =
                 redirect_uri.searchParams.set("state", state)            
             }
     
-            const providedState = params.state || config.requestParams.state
-            const providedClientID = params.client_id || config.requestParams.client_id
+            const provided_state = params.state || config.requestParams.state
+            const provided_client_id = params.client_id || config.requestParams.client_id
+            const provided_scopes = params.scope || config.requestParams.scope
     
-            const newCode = getCode({state: providedState, client_id: providedClientID})
+            const newCode = getCode({
+                state: provided_state, 
+                client_id: provided_client_id, 
+                scope: provided_scopes.split(" ")
+            })
+
             redirect_uri.searchParams.set("code", newCode)
     
             return redirect_uri
@@ -121,9 +126,18 @@ export const OICDResponses = (config: VerisimilitudeConfig): OICDResponsesType =
 
     function process_claims(user: StoredUser) {
         const skipped_claims: Array<string> = [];
+        const claim_data: Record<string, string | number> = {}
 
-        let claim_data: Record<string, string | number> = {}
-        user.request_details?.claims?.forEach((claim) => {
+        const claims = user.request_details?.scope?.map((scope) => {
+            const keyedScope = scope as keyof DefaultClaimsType
+            if (responseConfig.defaultClaims[keyedScope]) {
+                return responseConfig.defaultClaims[keyedScope]
+            }
+        }).filter((record) => {
+            return (record && record.length != 0)
+        }).flat() as Array<string>
+
+        claims.forEach((claim) => {
             if (user.user_details && user.user_details[claim]) {
                 console.log("User details already defined for ", claim)
                 console.log(user.user_details[claim])

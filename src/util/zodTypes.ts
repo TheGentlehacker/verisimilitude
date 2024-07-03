@@ -14,12 +14,16 @@ export const oicdWellKnown = z.object({
     userinfo_endpoint: z.string()
 })
 
+// TODO ACR claim, AZP claim
 export const oidcAuthParamsValidator = z.object({
     response_type: z.literal("code", {message: "MUST be `code` for the Authorization Code Flow"}),
     scope: z.string().includes("openid", {message: "Scope MUST contain `openid`"}),
     client_id: z.string(),
     redirect_uri: z.string().url(),
-    state: z.optional(z.string())
+    state: z.optional(z.string()),
+    max_age: z.optional(z.number()),
+    nonce: z.optional(z.string()),
+    claims: z.optional(z.array(z.string()))
 })
 
 // TODO implement the rest of the optional properties as listed
@@ -44,6 +48,13 @@ export const LoggerValidator = z.object({
 
 export const LoggerConfigValidator = LoggerValidator.partial()
 
+export const defaultClaimsValidator = z.object({
+    profile: z.optional(z.array(z.string())),
+    email: z.optional(z.array(z.string())),
+    address: z.optional(z.array(z.string())),
+    phone: z.optional(z.array(z.string())),
+})
+
 export const VerisimilitudeConfigValidator = z.object({
     allowInProduction: z.boolean(),
     issuer: z.string().url(),
@@ -53,6 +64,7 @@ export const VerisimilitudeConfigValidator = z.object({
         userinfo_endpoint: z.string()
     }),
     requestParams: oidcAuthParamsValidator.omit({redirect_uri: true}),
+    defaultClaims: defaultClaimsValidator,
     logger: LoggerValidator,
     server: z.object({
         host: z.string(),
@@ -77,6 +89,7 @@ export const oicdClaimsValidator = z.object({
 
 })
 
+export type DefaultClaimsType = z.infer<typeof defaultClaimsValidator>
 export type LoggerType = z.infer<typeof LoggerValidator>
 export type OICDAuthParams = z.infer<typeof oidcAuthParamsValidator>
 export type OICDIDTokenParams = z.infer<typeof oicdIDTokenParamsValidator>

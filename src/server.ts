@@ -19,6 +19,7 @@ export const FastifyServer = (config: VerisimilitudeConfig, responses: OICDRespo
         Querystring: OICDAuthParams
     }>(config.endpoints.authorization_endpoint, async function handler (request, reply) {
         logger.debug(`GET ${config.endpoints.authorization_endpoint} called with query`, request.query)
+        logger.debug(JSON.stringify(request.query))
         const reply_details = responses.do_authorization(request.query)
 
         if ("errors" in reply_details ) {
@@ -66,6 +67,7 @@ export const FastifyServer = (config: VerisimilitudeConfig, responses: OICDRespo
     })
 
     fastify.post(config.endpoints.userinfo_endpoint, async function handler (request, reply) {  // eslint-disable-line @typescript-eslint/no-unused-vars
+        console.log("USERDAT")
         return {
             
         }
