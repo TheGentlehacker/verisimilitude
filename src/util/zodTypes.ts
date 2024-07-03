@@ -57,6 +57,10 @@ export const VerisimilitudeConfigValidator = z.object({
     server: z.object({
         host: z.string(),
         port: z.number().gt(1024).lt(65535)
+    }),
+    client: z.object({
+        id: z.string(),
+        secret: z.string()
     })
 })
 
@@ -65,7 +69,7 @@ export const VerisimilitudeConfigOptionsZod = VerisimilitudeConfigValidator.part
 export const oicdTokenRequestParamsValidator = z.object({
     grant_type: z.literal("authorization_code"),
     code: z.string(),
-    redirect_uri: z.string().url()
+    redirect_uri: z.optional(z.string().url())
 })
 
 export const oicdClaimsValidator = z.object({

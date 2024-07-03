@@ -2,7 +2,7 @@ import { VerisimilitudeConfig } from "./util/zodTypes"
 
 export const defaultConfig: VerisimilitudeConfig = {
     allowInProduction: false,
-    issuer: "http://localhost",
+    issuer: "http://localhost:4444",
     endpoints: {
         authorization_endpoint: "/my_card_sir",
         token_endpoint: "/kindly_give_me_a_token",
@@ -24,6 +24,10 @@ export const defaultConfig: VerisimilitudeConfig = {
     server: {
         host: "localhost",
         port: 4444
+    },
+    client: {
+        id: "lovely",
+        secret: "allhushhush"
     }
 
 }
