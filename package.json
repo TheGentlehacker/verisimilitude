@@ -1,6 +1,6 @@
 {
   "name": "verisimilitude",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Accellerate your tests by running an in-memory authentication provider that implements OIDC. Poorly.",
   "author": {
     "name": "Dylan Lacey, the Gentlehacker",
@@ -23,9 +23,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.cts",
-  "bin": {
-    "verisimilitude": "./dist/standalone.js"
-  },
+  "bin": "./dist/standalone.js",
   "scripts": {
     "dev": "npx tsx ./src/standalone.ts",
     "build": "pkgroll",
