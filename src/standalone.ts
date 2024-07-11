@@ -1,3 +1,4 @@
+import { AddressInfo } from "node:net"
 import { Verisimilitude } from "./index"
 
 const run_server = async () => {
@@ -10,7 +11,8 @@ const run_server = async () => {
             listenTextResolver: (address) => { return `Verisimilitude is receiving visitors at ${address}`}
         })
 
-        console.log("Verisimilitude is receiving visitors at", server.server.address())
+        const server_details = server.server.address() as AddressInfo
+        console.log("Verisimilitude is receiving %s callers at port %d of %s", server_details.family, server_details.port, server_details.address)
     } catch ( err ) {
         console.log("Something went wrong")
         console.log(err)

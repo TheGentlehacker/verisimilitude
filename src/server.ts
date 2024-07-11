@@ -6,7 +6,9 @@ import fastifyFormbody from '@fastify/formbody'
 
 export const FastifyServer = (config: VerisimilitudeConfig, responses: OICDResponsesType) => {
     const logger = config.logger
-    const fastify: FastifyInstance = Fastify({logger: true})
+
+    //TODO replace default logger with pino and include pino-pretty
+    const fastify: FastifyInstance = Fastify({logger: false})
 
     fastify.register(fastifyFormbody)
 
