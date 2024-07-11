@@ -5,9 +5,9 @@ export const defaultConfig: VerisimilitudeConfig = {
     allowInProduction: false,
     issuer: "http://localhost:4444",
     endpoints: {
-        authorization_endpoint: "/my_card_sir",
-        token_endpoint: "/kindly_give_me_a_token",
-        userinfo_endpoint: "/who_is_this_fellow"
+        authorization: "/my_card_sir",
+        token: "/kindly_give_me_a_token",
+        userinfo: "/who_is_this_fellow"
     },
     requestParams: {
         response_type: "code",
@@ -28,7 +28,7 @@ export const defaultConfig: VerisimilitudeConfig = {
         port: 4444
     },
     client: {
-        id: "lovely",
+        id: "a_very_good_friend",
         secret: "allhushhush"
     }
 

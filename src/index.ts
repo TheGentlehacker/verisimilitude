@@ -1,21 +1,27 @@
-import type { VerisimilitudeConfigOptions } from "./util/zodTypes"
-import { OICDResponses } from "./OICDResponses"
-import { FastifyServer } from "./server"
-import { defaultConfig } from "./config"
-import { assertNotProduction } from "./util/assert"
+import { AddressInfo } from "net";
+import { VerisimilitudeConfigOptions } from "./util/zodTypes";
+import { VerisimilitudeEngine } from "./verisimilitude";
 
-let port = 4444
-let host = "localhost"
+export const Verisimilitude = async ( config?: VerisimilitudeConfigOptions ) => {
+    const {vs_server, host, port} = await VerisimilitudeEngine(config)
 
-export const Verisimilitude = (config: VerisimilitudeConfigOptions) => {
-    const mergedConfig = {...defaultConfig, ...config}
-    assertNotProduction(mergedConfig)
-    const responses = OICDResponses(mergedConfig)
+    return {
+        onwards: async () => {
+            try {
+                await vs_server.listen({
+                    port: port,
+                    host: host,
+                })
+        
+                const server_details = vs_server.server.address() as AddressInfo
+                console.log("Verisimilitude is receiving %s callers at port %d of %s", server_details.family, server_details.port, server_details.address)
+            } catch ( err ) {
+                console.log("Something went wrong")
+                console.log(err)
+                vs_server.log.error(err)
+                process.exit(1)
+            }
+        }
+    }
 
-    const server = FastifyServer(mergedConfig, responses)
-    
-    port = mergedConfig.server.port
-    host = mergedConfig.server.host
-
-    return {server: server, host: host, port: port}
 }
