@@ -1,13 +1,5 @@
 import { randAddress, randAvatar, randEmail, randFullName } from "@ngneat/falso"
 import { nanoid } from "nanoid"
-import gaussian from "gaussian"
-
-
-// export interface StoredUser {
-//     state?: string,
-//     client?: string,
-//     name
-// }
 
 export interface RequestDetails {
     state?: string,

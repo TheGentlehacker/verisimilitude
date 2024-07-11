@@ -6,7 +6,6 @@ import fastifyFormbody from '@fastify/formbody'
 
 export const FastifyServer = (config: VerisimilitudeConfig, responses: OICDResponsesType) => {
     const logger = config.logger
-    // const fastify: FastifyInstance = Fastify({logger: true})
     const fastify: FastifyInstance = Fastify({logger: true})
 
     fastify.register(fastifyFormbody)
