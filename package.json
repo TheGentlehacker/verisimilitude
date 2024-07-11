@@ -2,10 +2,17 @@
   "name": "verisimilitude",
   "version": "0.0.1",
   "description": "Run OAuth2 in-memory for testing. Poorly.",
-  "main": "server.ts",
   "type": "module",
+
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "bin": {
+    "verisimilitude": "./dist/standalone.js"
+  },
   "scripts": {
-    "dev": "npx tsx ./src/verisimilitude.ts",
+    "dev": "npx tsx ./src/standalone.ts",
+    "build": "pkgroll",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint ."
   },
@@ -21,6 +28,7 @@
     "@types/gaussian": "^1.2.2",
     "@types/node": "^20.14.9",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "pkgroll": "^2.1.1",
     "tsx": "^4.16.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.15.0"
