@@ -1,6 +1,6 @@
 {
   "name": "verisimilitude",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Accellerate your tests by running an in-memory authentication provider that implements OIDC. Poorly.",
   "author": {
     "name": "Dylan Lacey, the Gentlehacker",
