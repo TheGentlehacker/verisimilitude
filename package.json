@@ -1,6 +1,6 @@
 {
   "name": "verisimilitude",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Accellerate your tests by running an in-memory authentication provider that implements OIDC. Poorly.",
   "author": {
     "name": "Dylan Lacey, the Gentlehacker",
@@ -17,20 +17,28 @@
   "bugs": {
     "url": "https://github.com/TheGentlehacker/verisimilitude/issues"
   },
-  "repository": "github:TheGentlehacker/verisimilitude",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheGentlehacker/verisimilitude.git"
+  },
   "license": "ISC",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.cts",
-  "bin": "./dist/standalone.js",
+  "bin": {
+    "verisimilitude": "dist/standalone.js"
+  },
+  "files": [
+    "dist/**/*.*"
+  ],
   "scripts": {
     "dev": "npx tsx ./src/standalone.ts",
-    "build": "pkgroll",
+    "build": "rm -rf ./dist && pkgroll",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "server": ""
   },
-
   "dependencies": {
     "@fastify/formbody": "^7.4.0",
     "@ngneat/falso": "^7.2.0",
@@ -40,7 +48,6 @@
     "nanoid": "^5.0.7",
     "zod": "^3.23.8"
   },
-
   "devDependencies": {
     "@eslint/js": "^9.6.0",
     "@types/eslint__js": "^8.42.3",
@@ -52,4 +59,4 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.15.0"
   }
-} 
+}
