@@ -54,6 +54,7 @@
     "@types/gaussian": "^1.2.2",
     "@types/node": "^20.14.9",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "fastify-type-provider-zod": "4.0.1",
     "pkgroll": "^2.1.1",
     "tsx": "^4.16.0",
     "typescript": "^5.5.3",
