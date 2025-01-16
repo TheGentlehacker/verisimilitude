@@ -9,9 +9,9 @@ export const authCodeResponse = z.object({
 
 export const oicdWellKnown = z.object({
     issuer: z.string().url(),
-    authorization: z.string(),
-    token: z.string(),
-    userinfo: z.string()
+    authorization_endpoint: z.string(),
+    token_endpoint: z.string(),
+    userinfo_endpoint: z.string()
 })
 
 // TODO ACR claim, AZP claim

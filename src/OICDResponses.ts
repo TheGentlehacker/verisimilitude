@@ -18,9 +18,9 @@ export const OICDResponses = (config: VerisimilitudeConfig): OICDResponsesType =
         const ep = responseConfig.endpoints
         return {
             issuer: responseConfig.issuer,
-            authorization: new URL(ep.authorization, responseConfig.issuer).toString(),
-            token: new URL(ep.token, responseConfig.issuer).toString(),
-            userinfo: new URL(ep.authorization, responseConfig.issuer).toString(),
+            authorization_endpoint: new URL(ep.authorization, responseConfig.issuer).toString(),
+            token_endpoint: new URL(ep.token, responseConfig.issuer).toString(),
+            userinfo_endpoint: new URL(ep.authorization, responseConfig.issuer).toString(),
         }
     }
 
