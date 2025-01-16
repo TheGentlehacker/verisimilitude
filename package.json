@@ -40,7 +40,7 @@
     "server": ""
   },
   "dependencies": {
-    "@fastify/formbody": "^8.0.1",
+    "@fastify/formbody": "^8.0.2",
     "@ngneat/falso": "^7.2.0",
     "fastify": "^5.2.1",
     "gaussian": "^1.3.0",
@@ -49,15 +49,15 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@eslint/js": "^9.6.0",
+    "@eslint/js": "^9.17.0",
     "@types/eslint__js": "^8.42.3",
     "@types/gaussian": "^1.2.2",
-    "@types/node": "^20.14.9",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "fastify-type-provider-zod": "4.0.1",
+    "@types/node": "^22.10.7",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "fastify-type-provider-zod": "4.0.2",
     "pkgroll": "^2.1.1",
     "tsx": "^4.16.0",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^7.15.0"
+    "typescript-eslint": "^8.20.0"
   }
 }
