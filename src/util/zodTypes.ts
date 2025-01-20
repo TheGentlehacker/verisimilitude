@@ -11,7 +11,8 @@ export const oicdWellKnown = z.object({
     issuer: z.string().url(),
     authorization_endpoint: z.string(),
     token_endpoint: z.string(),
-    userinfo_endpoint: z.string()
+    userinfo_endpoint: z.string(),
+    jwks_uri: z.string().url(),
 })
 
 // TODO ACR claim, AZP claim
@@ -61,7 +62,8 @@ export const VerisimilitudeConfigValidator = z.object({
     endpoints: z.object({
         authorization: z.string(),
         token: z.string(),
-        userinfo: z.string()
+        userinfo: z.string(),
+        jwks: z.string().url(),
     }),
     requestParams: oidcAuthParamsValidator.omit({redirect_uri: true}),
     defaultClaims: defaultClaimsValidator,

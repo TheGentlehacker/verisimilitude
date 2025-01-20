@@ -135,6 +135,7 @@ const run_server = async () => {
 | | `authorization` | Path for user authorization | `/my_card_sir` |
 || `token` | Path for ID & Access Token generation | `/kindly_give_me_a_token` |
 || `userinfo` | Path for user info | `/who_is_this_fellow` |
+|| `jwks` | Path for JWKS document | `/letter_of_introduction.json` |
 | `requestParams` | | | _see below_ |
 | `defaultClaims` | | | _see below_ |
 | `logger` | | Integrate with custom logger | _see below_ |

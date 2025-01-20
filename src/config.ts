@@ -7,7 +7,8 @@ export const defaultConfig: VerisimilitudeConfig = {
     endpoints: {
         authorization: "/my_card_sir",
         token: "/kindly_give_me_a_token",
-        userinfo: "/who_is_this_fellow"
+        userinfo: "/who_is_this_fellow",
+        jwks: "/letter_of_introduction.json"
     },
     requestParams: {
         response_type: "code",
