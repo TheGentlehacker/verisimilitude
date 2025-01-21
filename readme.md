@@ -1,6 +1,6 @@
 # Verisimilitude
 ---
-Verisimilitude is your trusted confidant, an OIDC assistant making tests faster, easier & more efficacious via an in-memory implementation executing the functions of an OpenID Provider. Poorly.
+Verisimilitude is your trusted confidant, an OIDC assistant making tests faster, easier & more efficacious via an in-memory implementation of an OpenID Provider which supports the OpenID Connect Authorization Code Flow. Poorly.
 
 ### What is it good for?
 Such an excellent question! Verisimilitude is suitable for an exciting range of functions, including:
