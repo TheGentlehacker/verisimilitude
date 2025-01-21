@@ -22,6 +22,7 @@ export const OICDResponses = (config: VerisimilitudeConfig): OICDResponsesType =
             token_endpoint: new URL(ep.token, responseConfig.issuer).toString(),
             userinfo_endpoint: new URL(ep.authorization, responseConfig.issuer).toString(),
             jwks_uri: new URL(ep.jwks, responseConfig.issuer).toString(),
+            response_types_supported: [responseConfig.responseTypesSupported].flat().join(" ")
         }
     }
 

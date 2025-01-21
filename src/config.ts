@@ -16,6 +16,7 @@ export const defaultConfig: VerisimilitudeConfig = {
         client_id: "a_very_good_friend_and_client_of_mine",
         state: "botheration"
     },
+    responseTypesSupported: "code",
     defaultClaims: SpecificationDefaultClaims,
     logger: {
         debug: (message: string) => {console.debug(message)},

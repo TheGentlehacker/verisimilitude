@@ -136,6 +136,7 @@ const run_server = async () => {
 || `token` | Path for ID & Access Token generation | `/kindly_give_me_a_token` |
 || `userinfo` | Path for user info | `/who_is_this_fellow` |
 || `jwks` | Path for JWKS document | `/letter_of_introduction.json` |
+| `responseTypesSupported` | Which OAuth 2.0 response_types are supported | `code` |
 | `requestParams` | | | _see below_ |
 | `defaultClaims` | | | _see below_ |
 | `logger` | | Integrate with custom logger | _see below_ |

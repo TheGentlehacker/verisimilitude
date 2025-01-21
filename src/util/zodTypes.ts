@@ -7,12 +7,16 @@ export const authCodeResponse = z.object({
     refresh_token: z.string()
 })
 
-export const oicdWellKnown = z.object({
+export const responseTypeEnum = z.enum(["code", "token", "id_token"])
+export const responseTypes = z.union([responseTypeEnum, z.array(responseTypeEnum)])
+
+const oicdWellKnown = z.object({
     issuer: z.string().url(),
     authorization_endpoint: z.string(),
     token_endpoint: z.string(),
     userinfo_endpoint: z.string(),
     jwks_uri: z.string().url(),
+    response_types_supported: z.string()
 })
 
 // TODO ACR claim, AZP claim
@@ -65,6 +69,7 @@ export const VerisimilitudeConfigValidator = z.object({
         userinfo: z.string(),
         jwks: z.string().url(),
     }),
+    responseTypesSupported: responseTypes,
     requestParams: oidcAuthParamsValidator.omit({redirect_uri: true}),
     defaultClaims: defaultClaimsValidator,
     logger: LoggerValidator,
@@ -94,6 +99,7 @@ export const oicdClaimsValidator = z.object({
 export type DefaultClaimsType = z.infer<typeof defaultClaimsValidator>
 export type LoggerType = z.infer<typeof LoggerValidator>
 export type OICDAuthParams = z.infer<typeof oidcAuthParamsValidator>
+export type OICDResponseTypes = z.infer<typeof responseTypes>
 export type OICDIDTokenParams = z.infer<typeof oicdIDTokenParamsValidator>
 export type OICDIDTokenRequestParams = z.infer<typeof oicdTokenRequestParamsValidator>
 export type OICDWellKnownType = z.infer<typeof oicdWellKnown>
