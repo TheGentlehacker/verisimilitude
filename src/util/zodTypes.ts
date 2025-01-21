@@ -10,6 +10,7 @@ export const authCodeResponse = z.object({
 export const responseTypeEnum = z.enum(["code", "token", "id_token"])
 export const responseTypes = z.union([responseTypeEnum, z.array(responseTypeEnum)])
 
+// TODO: Add response_types_supported, subject_types_supported, id_token_signing_alg_values_supported
 const oicdWellKnown = z.object({
     issuer: z.string().url(),
     authorization_endpoint: z.string(),
