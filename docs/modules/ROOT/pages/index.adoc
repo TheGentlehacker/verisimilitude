@@ -4,7 +4,7 @@ Rev1, 27-Jan 2025: Initial Version
 :version-label: Edition
 :keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth
 :description: A Gentle Introduction to Verisimilitude, the efficacious means of testing systems which rely on OpenID Connect.
-
+:toc: left
 ---
 Verisimilitude is your trusted confidant, an OIDC assistant making tests faster, easier & more efficacious via an in-memory implementation of an OpenID Provider which supports the OpenID Connect Authorization Code Flow. Poorly.
 
