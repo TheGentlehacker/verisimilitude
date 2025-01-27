@@ -1,17 +1,28 @@
 = Verisimilitude
+Dylan C Lacey (The Gentlehacker)
+Rev1, 27-Jan 2025: Initial Version
+:version-label: Edition
+:keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth
+:description: A Gentle Introduction to Verisimilitude, the efficacious means /
+of testing systems which rely on OpenID Connect.
+
 ---
 Verisimilitude is your trusted confidant, an OIDC assistant making tests faster, easier & more efficacious via an in-memory implementation of an OpenID Provider which supports the OpenID Connect Authorization Code Flow. Poorly.
 
 == What is it good for?
 Such an excellent question! Verisimilitude is suitable for an exciting range of functions, including:
+
 * Test Acceleration
 * OIDC Development Support
 * ...
 
 == What is it not good for?
 Oh heavens, most everything. I shouldn't rely on it for any of the following:
+
 * Actual user authentication
 * Testing OAuth clients
 * Critical infrastructure protection
 * Emotional Support
 * Paying back that money it owes, it's very sorry, could it beg your indulgence just a little longer?
+
+This is {revnumber} of this page, as issued on {revdate}.
