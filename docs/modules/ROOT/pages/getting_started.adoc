@@ -1,0 +1,15 @@
+= Verisimilitude
+Dylan C Lacey (The Gentlehacker)
+Rev1, 27-Jan 2025: Initial Version
+:version-label: Edition
+:keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth
+:description: Getting started with Verisimilitude, the efficacious means of testing systems which rely on OpenID Connect.
+
+---
+So you've decided to avail yourself of the bountious benefits of Verisimilitude; How splendid!
+
+== Standalone Mode
+=== Installed Globally
+=== Installed in your Project
+
+== Embedded Mode
