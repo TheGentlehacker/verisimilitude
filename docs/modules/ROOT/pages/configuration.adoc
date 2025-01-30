@@ -28,7 +28,7 @@ Rev1, 31-Jan 2025: Initial Version
 | `server` | | Configure the server address |  
 | | ` host` | Server Hostname | `localhost` 
 | | `port` | Server Port | `4444` 
-| `client` | | Client access details | 
+| `client` | | Client access details 
 | | `id` | Client ID | `a_very_good_friend` 
 | | `secret` | Client Secret | `allhushhush` 
 |===
