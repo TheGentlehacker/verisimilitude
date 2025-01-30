@@ -1,3 +1,4 @@
 .Navigation
 * xref:getting_started.adoc
 * xref:index.adoc
+* xref:configuration.adoc
