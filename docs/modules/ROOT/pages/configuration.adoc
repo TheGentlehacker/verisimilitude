@@ -32,3 +32,12 @@ Rev1, 31-Jan 2025: Initial Version
 | | `id` | Client ID | `a_very_good_friend` 
 | | `secret` | Client Secret | `allhushhush` 
 |===
+
+=== requestParams
+Coming Soon
+
+=== defaultClaims
+Coming Soon
+
+=== logger
+Coming Soon
