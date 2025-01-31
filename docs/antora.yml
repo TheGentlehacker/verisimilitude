@@ -1,1 +1,4 @@
 name: verisimilitude
+title: Verisimilitude, the Friendly OIDC Provider
+nav:
+- modules/ROOT/nav.adoc
