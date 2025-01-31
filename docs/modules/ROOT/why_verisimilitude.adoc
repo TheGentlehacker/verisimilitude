@@ -6,10 +6,10 @@ Rev1, 27-Jan 2025: Initial Version
 :description: An ever so brief explanation of why Verisimilitude enhances your OpenID Connect testing process.
 ---
 
-= Why?
+== Why?
 Why not.
 
-= No seriously, why.
+== No seriously, why.
 User authentication often causes significant vexation during the testing process, which is only compounded by the use of external user authentication such as OAuth (eg _sign in with Google/Facebook_).
 
 *Firstly*, automating these systems can be difficult-to-impossible, especially if the authentication service is completely external. While this can be mitigated through the use of a local, containerized OAuth provider during development (such as the splendid [Keycloak](https://www.keycloak.org/)), these still require substantial setup and comprise a fairly heavy dependency to include during development and CI/CD.
