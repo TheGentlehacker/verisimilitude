@@ -1,0 +1,16 @@
+= Security
+Dylan C Lacey (The Gentlehacker)
+Rev1, 30-Jan 2025: Initial Version
+:version-label: Edition
+:keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth, security
+:description: The Security of Verisimilitude
+:toc: left
+---
+
+== There isn't any.
+
+WARNING: Do not use Verisimilitude as an identity provider in production _or_ in any situation requiring real authentication.
+
+Verisimilitude is designed to function as an OpenID Identity Connect provider in most functional respects, but critically, _not in terms of actually identifying users_. Indeed, that is the very quintessence of the beast!
+
+When contacted with a well-formed request, Verisimilitude will act as though it has already solicited identifying information from a user and authenticated them. 
