@@ -30,6 +30,10 @@ Oh heavens, most everything. I shouldn't rely on it for any of the following:
 
 == Features
 
-=== OIDC Discovery
+==== OIDC Discovery
 
 Follows https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest[the standard], serving a `.well_known` file to allow for automatic discovery of configuration details.
+
+==== Is an OIDC Server
+
+Will respond to requests to authenticate users! Correctly! We live in blessed times.
