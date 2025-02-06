@@ -15,6 +15,10 @@ Such an excellent question! Verisimilitude is suitable for an exciting range of 
 * OIDC Development Support
 * ...
 
+Verisimilitude was originally developed to allow for real OIDC Authorization Code Flows for fake users during testing.
+
+NOTE: Presently, Verisimilitude supports the https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OICD Authorization Flow] only. Support for Hybrid and Implicit Flows are pending.
+
 == What is it not good for?
 Oh heavens, most everything. I shouldn't rely on it for any of the following:
 
@@ -24,4 +28,8 @@ Oh heavens, most everything. I shouldn't rely on it for any of the following:
 * Emotional Support
 * Paying back that money it owes, it's very sorry, could it beg your indulgence just a little longer?
 
-This is {revnumber} of this page, as issued on {revdate}.
+== Features
+
+=== OIDC Discovery
+
+Follows https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest[the standard], serving a `.well_known` file to allow for automatic discovery of configuration details.

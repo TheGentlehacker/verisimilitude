@@ -1,37 +1,85 @@
-= Verisimilitude
+= Configuration & Customization
 Dylan C Lacey (The Gentlehacker)
-Rev1, 31-Jan 2025: Initial Version
+Rev1, 31-Jan 2025
 :version-label: Edition
 :keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth
 :description: Configuring Verisimilitude, the efficacious means of testing systems which rely on OpenID Connect.
+:source-language: typescript
+:source-highlighter: highlight.js
 :table-caption!:
+:listing-caption: Eg
+:listing-number!:
+:toc: right
 ---
-== Configuring Verisimilitude
-== Defaults
 
-.Options and Defaults
-[cols="1,1,3,1",stripes=even]
-|===
-| Object | Nested Property | Purpose | Default 
+Verisimilitude is exceedingly considerate and would never dream of preventing you from exercising OIDC as you wish.
 
-| `allowInProduction` | | Preventing foolish mistakes | `false` 
-| `issuer` | | Issuer value to list under `.well_known` | `http://localhost:4444` 
-| `endpoints` | | Path to host OIDC Endpoints |  
-| | `authorization` | Path for user authorization | `/my_card_sir` 
-|| `token` | Path for ID & Access Token generation | `/kindly_give_me_a_token` 
-|| `userinfo` | Path for user info | `/who_is_this_fellow` 
-|| `jwks` | Path for JWKS document | `/letter_of_introduction.json` 
-| `responseTypesSupported` | Which OAuth 2.0 response_types are supported | `code` 
-| `requestParams` | | | _see below_ 
-| `defaultClaims` | | | _see below_ 
-| `logger` | | Integrate with custom logger | _see below_ 
-| `server` | | Configure the server address |  
-| | ` host` | Server Hostname | `localhost` 
-| | `port` | Server Port | `4444` 
-| `client` | | Client access details 
-| | `id` | Client ID | `a_very_good_friend` 
-| | `secret` | Client Secret | `allhushhush` 
+== Providing Configuration
+
+NOTE: Configuration is currently only possible when running Verisimilitude xref:getting_started.adoc#installed_in_your_project[installed within a project].
+
+To educate Verisimilitude in your needs, pass a configuration object to [.source]`await Verisimilitude` with the relevant configuration keys.
+
+Said object is of type `VerisimilitudeConfigOptions`, and any unspecified keys will remain set to the defaults referenced in <<_all_options_and_defaults>>.
+
+.Configuring Hostname and Port 
+[source]
+----
+const vs_server = await Verisimilitude({
+    server: {
+        host: "dev.difference_engine.local",
+        port: "6323"
+    }
+})
+----
+
+== Available Options
+
+=== Issuer
+
+Sets the value of the `issuer` parameter in `.well_known`, as well as the `iss` claim in ID tokens issued by the server.
+
+According to the standard, this value is the "Issuer Identifier" and must be a HTTPS Url with no query or fragment components.
+
+.Setting a new Issuer
+[source]
+----
+const vs_server = await Verisimilitude({
+    issuer: https://localhost:4545
+})
+----
+
+Given many (all?) clients use this value to determine where to contact OIDC servers, it's probably best to set it to the same value as the hostname.
+
+=== Endpoints
+
+The `Endpoints` object allows you to control the path used for various endpoints. Typically, clients injest these values from the `.well_known` configuration and thus they do not need to be modified; However, they can if you wish.
+
+Changing these values will change them both in the `.well_known` configuration and in the paths on which Verisimilitude listens for requests. 
+
+Each value is appended to the value of <<_issuer>> and should be specified _without_ a trailing backslash.
+
+include::../partials/options.adoc[tag=theader]
+
+include::../partials/options.adoc[tag=endpoints]
 |===
+
+
+=== Response Types
+
+Which OAuth `response_type` values Verisimilitude should specify in its `.well_known` configuration.
+
+This defaults to
+
+NOTE: This does not presently control which response_types Verisimilitude will honour _or_ provide, simply the types it will claim to provide. Should this vex you, please make a feature request or, better yet, a Pull Request.
+
+== All Options and Defaults
+
+
+include::../partials/options.adoc[tag=theader]
+
+include::../partials/options.adoc[tag=tfull]
+
 
 === requestParams
 Coming Soon

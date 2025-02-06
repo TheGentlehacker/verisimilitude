@@ -8,8 +8,33 @@ Rev1, 27-Jan 2025: Initial Version
 ---
 So you've decided to avail yourself of the bountious benefits of Verisimilitude; How splendid!
 
-== Standalone Mode
-=== Installed Globally
-=== Installed in your Project
+== Firstly, Install Verisimilitude
 
-== Embedded Mode
+[source,terminal]
+----
+npx verisimilitude
+Need to install the following packages:
+verisimilitude@0.0.5
+Ok to proceed? (y) y
+
+Verisimilitude is receiving IPv6 callers at port 4444 of ::1
+----
+
+Don't want to install the global, standalone version? Verisimilitude also has a locally installed _and_ a library version.
+
+== Secondly, Configure Verisimilitude as your auth provider
+
+The peculiarities of your authentication system dictate how to configure it to make strident use of Verisimilitude. Should you use an authentication library, I recommend referring to the requisite documentation.
+
+By default, Verisimilitude 
+
+      id: "verisimilitude",
+      name: "Verisimilitude",
+      type: "oidc",
+      issuer: "http://localhost:4444",
+      clientId: 'a_very_good_friend',
+      clientSecret: 'hushhush',
+      client: {
+        id_token_signed_response_alg: "HS256"
+      }
+    })
