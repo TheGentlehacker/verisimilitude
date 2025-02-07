@@ -77,9 +77,9 @@ export const FastifyServer = (config: VerisimilitudeConfig, responses: OICDRespo
                 body: oicdTokenRequestParamsValidator
             }
         },
-        (request, reply) => {  // eslint-disable-line @typescript-eslint/no-unused-vars
+        async (request, reply) => {  // eslint-disable-line @typescript-eslint/no-unused-vars
             console.log("Requesting ID Token et al")
-            const reply_details = responses.get_id_token(request.body)
+            const reply_details = await responses.get_id_token(request.body)
 
             if ("errors" in reply_details) {
                 reply.code(reply_details.code).send(reply_details.errors)
