@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
 import { DefaultClaimsType, OICDAuthParams, OICDIDTokenRequestParams, OICDWellKnownType, VerisimilitudeConfig, oicdTokenRequestParamsValidator, oidcAuthParamsValidator } from "./util/zodTypes";
-import { StoredUser, getCode, user_by_code } from "./userStore";
+import { RequestDetails, StoredUser, getCode, user_by_code } from "./userStore";
 import * as jose from 'jose'
 import { StandardClaims } from "./util/standard_claims";
 
@@ -37,18 +37,17 @@ export const OICDResponses = (config: VerisimilitudeConfig): OICDResponsesType =
                 console.debug("Auth state param ", state)
                 redirect_uri.searchParams.set("state", state)            
             }
-    
-            const provided_state = params.state || config.requestParams.state
-            const provided_client_id = params.client_id || config.requestParams.client_id
-            const provided_scopes = params.scope || config.requestParams.scope
-    
-            const newCode = getCode({
-                state: provided_state, 
-                client_id: provided_client_id, 
-                scope: provided_scopes.split(" ")
-            })
 
-            redirect_uri.searchParams.set("code", newCode)
+            const request_details: RequestDetails = { 
+                client_id: params.client_id, 
+                scope: params.scope.split(" ")
+            }
+
+            if (params.state) { request_details.state = params.state }
+
+            const new_code = getCode(request_details)
+
+            redirect_uri.searchParams.set("code", new_code)
     
             return redirect_uri
         } catch (err) {

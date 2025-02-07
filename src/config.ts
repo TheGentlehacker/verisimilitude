@@ -11,10 +11,7 @@ export const defaultConfig: VerisimilitudeConfig = {
         jwks: "/letter_of_introduction.json"
     },
     requestParams: {
-        response_type: "code",
-        scope: "openid email",
         client_id: "a_very_good_friend_and_client_of_mine",
-        state: "botheration"
     },
     responseTypesSupported: "code",
     defaultClaims: SpecificationDefaultClaims,

@@ -71,7 +71,11 @@ export const VerisimilitudeConfigValidator = z.object({
         jwks: z.string().url(),
     }),
     responseTypesSupported: responseTypes,
-    requestParams: oidcAuthParamsValidator.omit({redirect_uri: true}),
+    requestParams: oidcAuthParamsValidator.omit({
+        redirect_uri: true,
+        scope: true,
+        response_type: true
+    }),
     defaultClaims: defaultClaimsValidator,
     logger: LoggerValidator,
     server: z.object({
