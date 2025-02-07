@@ -153,7 +153,7 @@ export const OICDResponses = (config: VerisimilitudeConfig): OICDResponsesType =
             }
             })
     
-        if (skipped_claims) {
+        if (skipped_claims.length > 0) {
             logger.info("Skipped unfulfillable claims: ", skipped_claims);
             return {claim_data: claim_data, skipped_claims: skipped_claims}
         } else {
