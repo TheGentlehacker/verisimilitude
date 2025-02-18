@@ -4,6 +4,7 @@ Rev1, 27-Jan 2025: Initial Version
 :version-label: Edition
 :keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth
 :description: An ever so brief explanation of why Verisimilitude enhances your OpenID Connect testing process.
+:toc: right
 ---
 
 == Why?

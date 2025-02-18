@@ -1,16 +1,10 @@
-:host: http://localhost
-:port: 4444
-:client_id: a_very_good_friend
-:client_secret: hushhush
+include::connection_defaults.adoc[]
 
-tag::connection_info_table[]
 [cols="1,3",stripes=even]
 |===
 | Object | Nested Property 
-| Server address | {host}:{port}
+| Issuer Address | {host}:{port}
 | Client ID | {client_id}
 | Client Secret | {client_secret}
+| JWT Algorithm | {jwt-algo}
 |===
-end::connection_info_table[]
-
-include::connection_defaults.adoc[tag=host]

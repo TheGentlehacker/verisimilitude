@@ -1,7 +1,5 @@
-tag::host[]
-http://localhost
-end::host[]
-
-tag::port[]
-4444
-end::port[]
+:host: http://localhost
+:port: 4444
+:client_id: a_very_good_friend
+:client_secret: hushhush
+:jwt-algo: HS256

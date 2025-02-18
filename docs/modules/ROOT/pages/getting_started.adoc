@@ -4,6 +4,7 @@ Rev1, 27-Jan 2025: Initial Version
 :version-label: Edition
 :keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth
 :description: Getting started with Verisimilitude, the efficacious means of testing systems which rely on OpenID Connect.
+:toc: right
 
 ---
 So you've decided to avail yourself of the bountious benefits of Verisimilitude; How splendid!
@@ -24,17 +25,17 @@ Don't want to install the global, standalone version? Verisimilitude also has a 
 
 == Secondly, Configure Verisimilitude as your auth provider
 
-The peculiarities of your authentication system dictate how to configure it to make strident use of Verisimilitude. Should you use an authentication library, I recommend referring to the requisite documentation.
+Depending on the peccadillos of your framework, you'll likely need to inform it of Verisimilitude's particulars, whose below-listed defaults can be changed as part of your configuration. Should you use an authentication library, I recommend referring to the requisite documentation.
 
-By default, Verisimilitude 
+.Verisimilitude's default configuration details
+include::../partials/connection_defaults.adoc[]
+Server Address:: {host}:{port}
+Client ID:: {client_id}
+Client Secret:: {client_secret}
 
-      id: "verisimilitude",
-      name: "Verisimilitude",
-      type: "oidc",
-      issuer: "http://localhost:4444",
-      clientId: 'a_very_good_friend',
-      clientSecret: 'hushhush',
-      client: {
-        id_token_signed_response_alg: "HS256"
-      }
-    })
+NOTE: You may also need to configure which signing algorithm Verisimilitude uses for JWT; Currently, the only option is {jwt-algo}.
+
+== Thirdly, ensure Verisimilitude is selected/selectable as a login option
+You may, (depending on your authentication setup), need to configure your front end to include Verisimilitude as an option for login.
+
+You will, most likely, need to configure your tests to make use of Verisimilitude as the authentication provider.

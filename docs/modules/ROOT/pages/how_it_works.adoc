@@ -20,6 +20,15 @@ Apologies.
 
 Verisimilitude has two core concerns. Firstly, providing _technically_ correct implementations of the requisite standards. Secondly, providing features that make it easy to run tests which involve authentication using said standards.
 
+It does this by implementing (most of) the "Authorization Code Flow" section of https://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect Core 1.0 incorporating errata set 2]. This flow has several steps and requires the _client_ (OAuth for "_The system wishing to authenticate a user_") to make requests to two or three endpoints of the server (_Verisimilitude_).
+
+*Firstly*, a request to the <<auth_endpoint,Authorization Endpoint>> for an `authentication code`.
+
+*Next*, a request (including the `authentication code`) to the <<#token_endpoint,Token Endpoint>> for an `ID token` and, typically, an `access token`. The `ID token` is a JWT containing a set of `claims` about the identified user.
+
+*Finally but Optionally*, a request (including the `access token`) to the <<user_endpoint,,UserInfo Endpoint>> for `claims` about the user. These may be the same as returned by the `ID token` or may elaborate further.
+
+
 .Which Standards does Verisimilitude follow?
 ****
 Currently, Verisimilitude is designed to follow:
@@ -27,12 +36,50 @@ Currently, Verisimilitude is designed to follow:
 
 * The `Authorization Code Flow` of https://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect Core 1.0 incorporating errata set 2]
 * The non-discovery portions of https://openid.net/specs/openid-connect-discovery-1_0.html[OpenID Connect Discovery 1.0 incorporating errata set 2]
+
+
+There are a limited number of departures from these specifications, either because they prevent Verisimilitude working as requires _or_ because their implementation isn't necessary. See <<non_compliance>> for further info.
 ****
 
-== Authorization Code Flow Requests
+== How Verisimilitude responds to requests
 
+TIP:: All of this behaviour is already provided as part of Verisimilitude, Gentle Reader, and is listed here merely for your edification.
+
+[#auth_endpoint]
+=== Authorization Endpoint Requests
 When Verisimilitude receives a request at the Authorization Endpoint, it does the following:
 
 . Ensures the request is a well formed Authentication request https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest[per the spec]
-. If the `state` param is present, 
+. Constructs a new URI based on the `redirect_uri` present in the request
+. Extracts the `state` param, if present
+. Generates a new authentication code and caches it against the `state`, `client_id` and requested `scope` values
+. Redirects to the requested `redirect_uri`, attaching the authentication code as a query param
+
+[#token_endpoint]
+=== Token Endpoint Requests
+_Not Yet Documented, Pardon!_
+
+[#user_endpoint]
+=== User Info Endpoint
+_Not Yet Implemented, Sorry!_
+
+
+[#non_compliance]
+== Non-Compliance Details
+=== Absent From behaviour specified in OpenID Connect Core 1.0 incorporating errata set 2
+==== Section 3
+===== 3.1.2.1
+. Verisimilitude does not verify that the `redirect_uri` matches one pre-registered for the client in question (As there is no need to pre-register clients)
+. Verisimilitude does nothing with the value of `display` or `prompt` as no user prompt occurs
+. Verisimilitude does not honour the `response_mode` parameter and always returns the default mode
+. Versimilitude does not currently process or honour behaviour associated with `nonce`, `max_age`, `id_token_hint`, `login_hint` or `acr_values` parameters
+
+===== 3.1.2.2
+. Verisimilitude does not validate any `sub` claim for authenticating a specific user
+
+===== 3.1.2.3
+None of this behaviour is implemented.
+
+===== 3.1.2.4
+None of this behaviour is implemented.
 

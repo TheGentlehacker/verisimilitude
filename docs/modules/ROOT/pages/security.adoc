@@ -4,7 +4,7 @@ Rev1, 30-Jan 2025: Initial Version
 :version-label: Edition
 :keywords: openid, oidc, oid connect, openid connect, mocking, testing, oauth, security
 :description: The Security of Verisimilitude
-:toc: left
+:toc: right
 ---
 
 == There isn't any.
